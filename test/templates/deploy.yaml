@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.nameDeploy }}
+  {{- include "test" . | indent 2}}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.nameDeploy }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.nameDeploy }}
+    spec:
+      containers:
+      - name: {{ .Values.imageDeploy }}:latest
+        resources:
+          limits: {{ .Values.limits | toYaml | nindent 12 }}
+        ports:
+        - containerPort: {{ .Values.containerPortDeploy }}

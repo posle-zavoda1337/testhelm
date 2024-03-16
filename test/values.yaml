@@ -1,0 +1,13 @@
+nameDeploy: myapp
+imageDeploy: nginx
+versionImageDeploy: latest
+containerPortDeploy: 80
+limits: 
+  memory: "128Mi"
+  cpu: "500m"
+
+stage: 
+  - name: test
+    age: "22"
+  - name: prod 
+    age: "24"
